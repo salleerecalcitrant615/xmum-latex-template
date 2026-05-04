@@ -14,6 +14,11 @@
 
 ---
 
+<p align="center">
+  <img src="figure/document_sample.jpg" alt="Template Preview" width="600">
+</p>
+
+
 Maintained since **May 2025** and battle-tested across a full academic year of XMUM coursework — from short weekly write-ups to a **500+ page** MPU4.1 Community Service Final Report.
 Widely adopted by classmates and acknowledged by lecturers for its clean, professional output.
 
