@@ -1,0 +1,102 @@
+% =============================================================================
+%  overview.tex  —  Template Overview
+%
+%  This section appears as the first section of the demo document.
+%  It explains the project structure and usage conventions to new users.
+%  Feel free to delete this file once you are familiar with the template.
+% =============================================================================
+
+\section{Template Overview}
+
+This document is a demo for the \textbf{XMUM Assignment Template} —
+a general-purpose \LaTeX{} template for English assignments at
+Xiamen University Malaysia (XMUM).
+It has been maintained and used across courses since May 2025,
+covering reports of all sizes from short weekly write-ups to a
+500\,+ page MPU4.1 Community Service Final Report.
+
+Features provided by \texttt{xmum\_asg.cls}:
+
+\begin{itemize}
+    \item XMUM-style header and ``Page \textit{X} of \textit{Y}'' footer
+    \item APA citation style (\verb|\citet{}| / \verb|\citep{}|) via \texttt{apacite}
+    \item Syntax-highlighted code blocks
+    \item Smart cross-references with \verb|\cref{}| / \verb|\Cref{}| (\texttt{cleveref})
+    \item Figure and table numbering per section (Figure~1.1, Table~2.3, \ldots)
+    \item Cover page / Rubric / Turnitin report attachment via \verb|\includepdf|
+    \item \texttt{[turnitin]} class option — suppress headers/footers for Turnitin submission
+\end{itemize}
+
+\subsection{Recommended Project Structure}
+
+Organise your assignment folder as shown below.
+This layout separates source content, images, and university documents
+into clearly defined locations.
+
+\begin{verbatim}
+your-assignment/
+├── main.tex                 <- Entry point; edit metadata, then \input sections
+├── xum_review.cls           <- Template class; do not edit unless necessary
+├── ref.bib                  <- BibTeX references (APA format)
+│
+├── sections/                <- One .tex file per section (strongly recommended)
+│   ├── 01_introduction.tex
+│   ├── 02_methodology.tex
+│   └── ...
+│
+├── figure/                  <- All images go here
+│   └── my_chart.png
+│
+└── docs/                    <- Official documents from the university
+    ├── cover_page.pdf       <- Exported from cover_page.docx
+    ├── sample_rubric.pdf    <- Marking rubric from the course portal
+    └── turnitin_report.pdf  <- Downloaded after Turnitin submission
+\end{verbatim}
+
+\subsection{Modular Section Management}
+
+\textbf{Strongly recommended:} split your content into one \texttt{.tex} file
+per section and \verb|\input| them from \texttt{main.tex}:
+
+\begin{verbatim}
+\input{sections/01_introduction.tex}
+\input{sections/02_methodology.tex}
+\input{sections/03_results.tex}
+\end{verbatim}
+
+Do \emph{not} write all your content directly inside \texttt{main.tex}.
+
+\textbf{Why?} This approach makes AI-assisted writing significantly more
+effective.
+AI tools such as ChatGPT, Claude, and Gemini operate within a limited
+context window.
+When your entire document is one long file, the AI can only see a portion of
+it at a time, often missing critical context from earlier or later sections.
+By feeding one section file at a time, the AI reads your complete section in
+full, produces higher-quality suggestions, and edits more accurately without
+wasting its context budget on unrelated content.
+
+\subsection{Compilation}
+
+This template requires \textbf{XeLaTeX} (not pdfLaTeX).
+The number of passes depends on whether your document contains citations.
+
+\textbf{With citations} (i.e.\ you use \verb|\bibliography{ref}|):
+
+\begin{verbatim}
+xelatex main   (1st pass — generates .aux)
+bibtex main    (resolves citations from ref.bib)
+xelatex main   (2nd pass — inserts bibliography)
+xelatex main   (3rd pass — resolves all cross-references)
+\end{verbatim}
+
+\textbf{Without citations} (no \verb|\bibliography{}| in your document):
+
+\begin{verbatim}
+xelatex main   (1st pass)
+xelatex main   (2nd pass — resolves cross-references and ToC)
+\end{verbatim}
+
+In \textbf{VS Code} with the LaTeX Workshop extension, set the recipe to
+\texttt{latexmk} — it detects citations automatically and runs the correct
+number of passes without manual intervention.

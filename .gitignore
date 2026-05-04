@@ -1,0 +1,43 @@
+# ============================================================
+#  .gitignore — XMUM LaTeX Template
+# ============================================================
+
+# Private working notes (not part of the open-source release)
+docs_ignore/
+
+# ------------------------------------------------------------
+#  LaTeX auxiliary files
+# ------------------------------------------------------------
+*.aux
+*.bbl
+*.bcf
+*.blg
+*.fdb_latexmk
+*.fls
+*.lof
+*.log
+*.lot
+*.out
+*.run.xml
+*.synctex.gz
+*.synctex(busy)
+*.toc
+*.xdv
+
+# ------------------------------------------------------------
+#  Compiled output
+#  main.pdf is kept and tracked as a rendered demo.
+#  All other PDFs (cover page, rubric, Turnitin) are excluded.
+# ------------------------------------------------------------
+*.pdf
+!main.pdf
+*.dvi
+
+# ------------------------------------------------------------
+#  Editor / OS noise
+# ------------------------------------------------------------
+.DS_Store
+Thumbs.db
+*.swp
+*.swo
+.vscode/

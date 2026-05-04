@@ -1,0 +1,123 @@
+% =============================================================================
+%  sample_section.tex  —  Demo content for the XMUM template
+%
+%  This file demonstrates the most commonly used LaTeX features in XMUM
+%  assignments. Read the comments carefully — they explain exactly how each
+%  feature works so you can adapt it for your own report.
+% =============================================================================
+
+% -----------------------------------------------------------------------------
+%  SECTION 1 — Figures
+% -----------------------------------------------------------------------------
+\section{Figures}
+
+Figures are inserted with the \texttt{figure} environment.
+The \texttt{[H]} specifier (from the \texttt{float} package) forces the figure
+to appear \emph{exactly here} in the document, rather than floating to
+the top or bottom of the page.
+
+\begin{figure}[H]
+    \centering
+    % Replace "figure/sample_figure.jpg" with the path to your own image.
+    % Supported formats: jpg, png, pdf.
+    \includegraphics[width=0.4\textwidth]{figure/sample_figure.jpg}
+    % Write a concise, descriptive caption. It appears below the figure.
+    \caption{Official crest of Xiamen University Malaysia (XMUM).}
+    % The label is used for cross-referencing. Must be unique across the document.
+    \label{fig:xmum-crest}
+\end{figure}
+
+Cross-reference example: The university crest is shown in \Cref{fig:xmum-crest}.
+Use \verb|\Cref{}| (capital C) at the start of a sentence and
+\verb|\cref{}| (lowercase c) in the middle of one.
+
+% -----------------------------------------------------------------------------
+%  SECTION 2 — Tables
+% -----------------------------------------------------------------------------
+\section{Tables}
+
+A professional three-line table uses \texttt{booktabs} rules:
+\verb|\toprule|, \verb|\midrule|, and \verb|\bottomrule|.
+Avoid using vertical lines — they are considered poor typographic practice.
+
+\begin{table}[H]
+    \centering
+    \caption{Comparison of common programming paradigms.}
+    \label{tab:paradigms}
+    % "adjustbox" scales the table down automatically if it is wider than
+    % the text column — useful for tables with many columns.
+    \begin{adjustbox}{max width=\textwidth}
+    \begin{tabular}{llll}
+        \toprule
+        \textbf{Paradigm}   & \textbf{Key Concept}  & \textbf{Example Language} & \textbf{Typical Use Case} \\
+        \midrule
+        Procedural          & Step-by-step execution & C, Pascal                & System-level programming  \\
+        Object-Oriented     & Encapsulation, classes & Java, Python             & Application development   \\
+        Functional          & Immutability, pure functions & Haskell, Clojure    & Data transformation       \\
+        Declarative         & What, not how          & SQL, Prolog              & Querying, logic reasoning \\
+        \bottomrule
+    \end{tabular}
+    \end{adjustbox}
+\end{table}
+
+As shown in \Cref{tab:paradigms}, different paradigms suit different problems.
+
+% -----------------------------------------------------------------------------
+%  SECTION 3 — Citations
+% -----------------------------------------------------------------------------
+\section{Citations}
+
+This template uses the \textbf{APA} citation style via \texttt{apacite}.
+Two citation commands are available:
+
+\begin{itemize}
+    \item \verb|\citet{}| — \emph{narrative} citation, where the author's name
+          is part of the sentence.
+    \item \verb|\citep{}| — \emph{parenthetical} citation, placed in brackets
+          at the end of a clause.
+\end{itemize}
+
+\noindent\textbf{Narrative citation example:}
+
+\citet{vaswani2023attentionneed} introduced the Transformer architecture,
+demonstrating that self-attention mechanisms alone are sufficient for
+state-of-the-art sequence modelling without recurrence or convolution.
+
+\noindent\textbf{Parenthetical citation example:}
+
+The Transformer model has since become the dominant architecture for natural
+language processing tasks, underpinning large language models such as GPT and
+BERT \citep{vaswani2023attentionneed}.
+
+% -----------------------------------------------------------------------------
+%  SECTION 4 — Code Listings
+% -----------------------------------------------------------------------------
+\section{Code Listings}
+
+The template provides syntax-highlighted environments for common languages.
+
+\subsection{Python}
+
+\begin{python}
+# A simple example using the Transformer attention concept
+import torch
+import torch.nn.functional as F
+
+def scaled_dot_product_attention(Q, K, V):
+    """Compute scaled dot-product attention."""
+    d_k = Q.size(-1)
+    scores = torch.matmul(Q, K.transpose(-2, -1)) / (d_k ** 0.5)
+    weights = F.softmax(scores, dim=-1)
+    return torch.matmul(weights, V)
+\end{python}
+
+\subsection{SQL}
+
+\begin{sql}
+-- Retrieve top-5 students by GPA
+SELECT student_id, name, gpa
+FROM   students
+WHERE  status = 'active'
+ORDER  BY gpa DESC
+LIMIT  5;
+\end{sql}

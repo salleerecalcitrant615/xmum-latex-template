@@ -1,0 +1,146 @@
+% =============================================================================
+%  main.tex — XMUM Assignment Template (Demo / Starter File)
+%  厦门大学马来西亚分校作业模板（演示/起始文件）
+%
+%  编译器 / Compiler : XeLaTeX（必须，不能用 pdfLaTeX）
+%  编码   / Encoding : UTF-8
+% =============================================================================
+
+% 正常提交版本 / Normal submission
+\documentclass{xmum_asg}
+
+% Turnitin 提交版本：禁用所有页眉页脚，防止重复文本误判 / Turnitin submission:
+% disables all headers/footers to avoid false similarity matches.
+% \documentclass[turnitin]{xmum_asg}
+
+% =============================================================================
+\begin{document}
+
+% -----------------------------------------------------------------------------
+%  封面页 / Cover Page
+%  ───────────────────
+%  大部分课程要求插入学校提供的封面。操作步骤：
+%  Most courses require an official cover page. Steps:
+%
+%  1. 用 Word 编辑 docs/cover_page_sample.docx，填写个人信息。
+%     Edit docs/cover_page_sample.docx with your personal details.
+%  2. Word → 文件 → 打印 → "Microsoft Print to PDF"
+%     保存为 docs/cover_page_sample.pdf（覆盖原文件）。
+%     Word → File → Print → "Microsoft Print to PDF",
+%     save as docs/cover_page_sample.pdf (overwrite the placeholder).
+%  3. 不需要封面页时，注释掉下面这行。
+%     Comment out the line below if no cover page is required.
+% -----------------------------------------------------------------------------
+\includepdf[pages=-]{docs/cover_page_sample.pdf}
+
+% -----------------------------------------------------------------------------
+%  目录 / Table of Contents
+%  ─────────────────────────
+%  由 \section / \subsection 命令自动生成，需编译两次页码才正确。
+%  Auto-generated from \section/\subsection. Requires two compilations to
+%  resolve page numbers correctly.
+%  目录页不计入正文 "Page X of Y" 的页码范围。
+%  The ToC page is excluded from the "Page X of Y" body count.
+% -----------------------------------------------------------------------------
+\pagestyle{empty}           % 目录页无页眉页脚 / No header/footer on ToC page
+\tableofcontents
+\thispagestyle{empty}
+\clearpage
+
+% 恢复 XMUM 页眉页脚，正文页码从第 1 页开始。
+% Restore XMUM header/footer; body page count starts from 1.
+% "Page X of Y" 中的 Y 以 \label{LastMainPage} 为终点，附录不计入。
+% Y in "Page X of Y" ends at \label{LastMainPage} — appendices excluded.
+\pagestyle{fancy}
+\fancyfoot[C]{Page \thepage\ of \pageref{LastMainPage}}
+\setcounter{page}{1}
+
+% -----------------------------------------------------------------------------
+%  正文内容 / Main Body Content
+%  ─────────────────────────────
+%  每个 section 一个 .tex 文件，用 \input 引入（强烈推荐，见 overview.tex）。
+%  One .tex file per section, included via \input (strongly recommended,
+%  see overview.tex for the rationale).
+% -----------------------------------------------------------------------------
+\input{sections/overview.tex}
+\input{sections/sample_section.tex}
+\input{sections/best_practices.tex}
+
+% -----------------------------------------------------------------------------
+%  参考文献 / Bibliography
+%  ────────────────────────
+%  在 ref.bib 中用 BibTeX 格式添加文献，模板自动应用 APA 格式。
+%  Add references to ref.bib in BibTeX format; APA style is applied automatically.
+%  "References" 标题会自动加入目录。
+%  The "References" heading is added to the ToC automatically.
+% -----------------------------------------------------------------------------
+\bibliography{ref}
+
+% -----------------------------------------------------------------------------
+%  正文结束标记 / End-of-Main-Body Marker
+%  ─────────────────────────────────────
+%  必须放在 \bibliography 之后、\clearpage 之前，用于 "Page X of Y" 计算。
+%  Must remain AFTER \bibliography and BEFORE \clearpage — used by the footer.
+% -----------------------------------------------------------------------------
+\label{LastMainPage}
+\clearpage
+
+% -----------------------------------------------------------------------------
+%  附录 / Appendix
+%  ────────────────
+%  附录标题自动编号为 A、B、C……
+%  Appendix sections are labelled A, B, C… automatically.
+%
+%  页码重置为罗马数字（i, ii, iii…），与正文独立计数，符合英文论文规范。
+%  Page numbering restarts in Roman numerals (i, ii, iii…), independent of
+%  the main body — following standard academic convention.
+%  页脚只显示数字本身，不含 "of N"。
+%  Footer shows only the numeral, no "of N".
+% -----------------------------------------------------------------------------
+\pagenumbering{roman}
+\fancyfoot[C]{\thepage}
+
+\input{sections/appendix.tex}
+
+\clearpage
+
+% -----------------------------------------------------------------------------
+%  评分标准 / Marking Rubric（如讲师要求则取消注释 / uncomment if required）
+%  ────────────────────────────────────────────────────────────────────────────
+%  1. 从课程门户下载正式评分表。/ Download the official rubric from the portal.
+%  2. 保存为 docs/sample_rubric.pdf（覆盖占位文件）。
+%     Save as docs/sample_rubric.pdf (overwrite the placeholder).
+%  3. 根据实际页数调整 pages=1-5。/ Adjust pages=1-5 to the real page count.
+%  4. 取消下方注释。/ Uncomment the block below.
+% -----------------------------------------------------------------------------
+% \phantomsection
+% \addtocontents{toc}{\cftpagenumbersoff{section}}
+% \addcontentsline{toc}{section}{Marking Rubric}
+% \includepdf[pages=1-5, fitpaper=true]{docs/sample_rubric.pdf}
+
+% -----------------------------------------------------------------------------
+%  Turnitin 查重报告（如讲师要求则取消注释 / uncomment if required）
+%  ────────────────────────────────────────────────────────────────────────────
+%  1. 提交作业后等待 Turnitin 生成报告（通常 24 小时内）。
+%     Submit your assignment and wait for Turnitin to generate the report.
+%  2. 下载 PDF 并保存为 docs/sample_turnitin_report.pdf。
+%     Download the PDF and save as docs/sample_turnitin_report.pdf.
+%  3. 根据实际页数调整 pages=1-5。/ Adjust pages=1-5 to the real page count.
+%  4. 取消下方注释。/ Uncomment the block below.
+%
+%  重要：上传 Turnitin 的版本请使用 \documentclass[turnitin]{xmum_asg}
+%  编译，避免页眉页脚文字被误判为重复（详见 best_practices.tex）。
+%  IMPORTANT: Compile with \documentclass[turnitin]{xmum_asg} for the
+%  version you upload to Turnitin (see best_practices.tex for details).
+% -----------------------------------------------------------------------------
+% \phantomsection
+% \addtocontents{toc}{\cftpagenumbersoff{section}}
+% \addcontentsline{toc}{section}{Turnitin Report}
+% \includepdf[pages=1-5, fitpaper=true]{docs/sample_turnitin_report.pdf}
+
+% 附件之后停止显示页码 / Stop page numbering after all attachments
+\clearpage
+\pagenumbering{gobble}
+
+% =============================================================================
+\end{document}

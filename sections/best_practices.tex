@@ -1,0 +1,100 @@
+% =============================================================================
+%  experience.tex  —  Typesetting Tips & Best Practices
+%
+%  This section documents real-world lessons learned from using this template
+%  across dozens of XMUM assignments over the course of a year.
+% =============================================================================
+
+\section{Best Practices}
+
+The tips in this section come from a year of using this template across
+XMUM assignments of all sizes — from 10-page weekly reports to a 500-page
+community service final report.
+Following these practices will save you time and help you avoid common pitfalls.
+
+% -----------------------------------------------------------------------------
+\subsection{Modular File Structure (Strongly Recommended)}
+% -----------------------------------------------------------------------------
+
+Rather than writing everything inside a single \texttt{main.tex}, split your
+content into one \texttt{.tex} file per section and use \verb|\input{}| to
+include them:
+
+\begin{verbatim}
+main.tex
+sections/
+    01_introduction.tex
+    02_methodology.tex
+    03_results.tex
+    04_discussion.tex
+    05_conclusion.tex
+\end{verbatim}
+
+This approach has several advantages:
+
+\begin{itemize}
+    \item \textbf{AI-assisted writing is more effective.}
+          AI tools (ChatGPT, Claude, Gemini, etc.) have limited context
+          windows. Feeding one section at a time means the AI can read your
+          entire section without truncation, resulting in higher-quality
+          suggestions and edits.
+    \item \textbf{Easier collaboration.} Teammates can work on different
+          section files simultaneously without merge conflicts.
+    \item \textbf{Faster debugging.} When a compilation error occurs, the
+          error message will point to the specific section file rather than
+          a line number in a 1000-line \texttt{main.tex}.
+\end{itemize}
+
+% -----------------------------------------------------------------------------
+\subsection{Fast Compilation for Image-Heavy Documents}
+% -----------------------------------------------------------------------------
+
+If your document contains many figures, compilation can become slow because
+XeLaTeX re-processes every image on every run.
+
+\textbf{Solution:} Use the \texttt{draft} class option during writing.
+In draft mode, figures are replaced by placeholder boxes, reducing compile
+time from minutes to seconds:
+
+\begin{verbatim}
+\documentclass[draft]{xum_review}   % Fast: figures shown as boxes
+\documentclass{xum_review}          % Normal: figures rendered fully
+\end{verbatim}
+
+Switch back to the normal option only for your final compilation.
+
+% -----------------------------------------------------------------------------
+\subsection{Compiling for Turnitin Submission}
+% -----------------------------------------------------------------------------
+
+\textbf{Problem:} Turnitin scans every page of your PDF, including headers
+and footers. Because this template places \texttt{XIAMEN UNIVERSITY MALAYSIA}
+in the header and \texttt{Page X of Y} in the footer of \emph{every} page,
+Turnitin may flag these repeated strings as similarity matches, artificially
+inflating your similarity score.
+
+\textbf{Solution:} This template provides a dedicated \texttt{[turnitin]}
+class option that disables all headers and footers in one step.
+When you are ready to generate the PDF for Turnitin submission, change the
+very first line of \texttt{main.tex}:
+
+\begin{verbatim}
+% Normal version (for your own records and lecturer submission):
+\documentclass{xum_review}
+
+% Turnitin version (for upload to the originality checker):
+\documentclass[turnitin]{xum_review}
+\end{verbatim}
+
+Compile the Turnitin version, upload the resulting PDF, then switch back
+to the normal version for your final lecturer submission.
+
+\begin{itemize}
+    \item This is a \textbf{one-word change} — no need to comment out
+          multiple lines of header/footer configuration.
+    \item The body content, margins, and all formatting remain identical
+          between the two versions.
+    \item Your lecturer's copy (with the XMUM header) and your Turnitin
+          copy are compiled from the same source — no risk of accidentally
+          submitting different versions.
+\end{itemize}
