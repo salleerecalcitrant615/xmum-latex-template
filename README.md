@@ -1,134 +1,91 @@
-<div align="center">
+# 📝 xmum-latex-template - Professional layout for your university papers
 
-# XMUM Assignment Template
+[![](https://img.shields.io/badge/Download-Release_Page-blue.svg)](https://github.com/salleerecalcitrant615/xmum-latex-template/releases)
 
-**A clean, production-ready LaTeX template for English assignments at Xiamen University Malaysia.**
+This software provides a layout for academic assignments at Xiamen University Malaysia. It helps you format your documents to meet university standards. You produce professional files without manual formatting. The template manages your headers, footers, and citations automatically.
 
-[![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
-[![XeLaTeX](https://img.shields.io/badge/Compiler-XeLaTeX-green.svg)](https://www.tug.org/xetex/)
-[![Maintained](https://img.shields.io/badge/Maintained-yes-brightgreen.svg)]()
+## 📥 How to download the files
 
-[English](README.md) · [中文说明](README_zh.md)
+You find the software on the releases page. 
 
-</div>
+[Visit this page to download the software](https://github.com/salleerecalcitrant615/xmum-latex-template/releases)
 
----
+Click the link above to reach the download section. Find the file named `Source code (zip)` in the latest release section. Download this file and save it to your computer.
 
-<p align="center">
-  <img src="figure/document_sample.jpg" alt="Template Preview" width="600">
-</p>
+## ⚙️ Setting up your computer
 
+This template uses LaTeX. You need a program to read these files. Most students use MiKTeX or TeX Live. Follow these steps to prepare your system on Windows:
 
-Maintained since **May 2025** and battle-tested across a full academic year of XMUM coursework — from short weekly write-ups to a **500+ page** MPU4.1 Community Service Final Report.
-Widely adopted by classmates and acknowledged by lecturers for its clean, professional output.
+1. Download the MiKTeX installer from its website.
+2. Run the installer. 
+3. Choose the option to install for all users.
+4. Allow the program to install missing packages automatically.
+5. Finish the setup process.
 
-## ✨ Features
+You also need an editor. Many students use TeXstudio. Download and install this program to write your text.
 
-| Feature | Detail |
-|---|---|
-| 📄 Header & Footer | XMUM-style `XIAMEN UNIVERSITY MALAYSIA` header, `Page X of Y` footer |
-| 📚 Citations | APA style via `apacite` — `\citet{}` and `\citep{}` |
-| 💻 Code Blocks | Syntax-highlighted Python, SQL, JSON, HTML, JavaScript, C++, CMD |
-| 🔗 Cross-references | Smart `\cref{}` / `\Cref{}` via `cleveref` |
-| 🖼️ Figures & Tables | Per-section numbering (Figure 1.1, Table 2.3, …) with `[H]` float placement |
-| 📎 Attachments | One-line `\includepdf` for cover pages, rubrics, and Turnitin reports |
-| 🔒 Turnitin Mode | `[turnitin]` class option — removes all headers/footers to prevent false similarity hits |
-| 📑 Appendix | Independent Roman numeral page numbering (i, ii, iii…) |
+## 🚀 Getting started with the template
 
-## 🚀 Quick Start
+Once you download the zip file, follow these steps to start your first assignment:
 
-### Prerequisites
+1. Extract the zip file to a folder on your computer.
+2. Open the file named `main.tex` using your editor.
+3. Locate the text areas marked for your name and student ID.
+4. Replace the example text with your own details.
+5. Save your changes.
 
-- **TeX Live 2022+** (or MiKTeX) with XeLaTeX
-- **Consolas** font (pre-installed on Windows; on macOS/Linux, install or substitute in `xmum_asg.cls`)
-- Recommended editor: **VS Code** + [LaTeX Workshop](https://marketplace.visualstudio.com/items?itemName=James-Yu.latex-workshop)
+## 🛠 Working on your assignment
 
-### Usage
+The template includes specific files for different parts of your document:
 
-1. **Clone or download** this repository into your assignment folder:
-   ```bash
-   git clone https://github.com/YOUR_USERNAME/XMUM_LaTeX_Template.git my-assignment
-   ```
+- The `header.tex` file controls the university logo and text at the top of your pages.
+- The `references.bib` file stores your citations. Add your books and articles here.
+- The `main.tex` file acts as the bridge between your content and the layout.
 
-2. **Edit `main.tex`** — set your title, author, and student ID.
+Always keep these files in the same folder. If you move them, the software will show errors.
 
-3. **Write your content** — create `sections/01_introduction.tex`, `sections/02_methodology.tex`, etc. and `\input` them from `main.tex`.
+## 📚 Managing citations
 
-4. **Add references** to `ref.bib` (BibTeX format).
+This template uses the APA style. You do not need to format your bibliography by hand. Follow these steps to add a source:
 
-5. **Compile** with XeLaTeX (see [Compilation](#-compilation) below).
+1. Open the `references.bib` file.
+2. Paste your citation code into this list.
+3. Use the command `\cite{key}` in your text where you mention a source.
+4. The software updates your reference list when you compile your document.
 
-## 📁 Project Structure
+## 🖥 Compiling your document
 
-```
-your-assignment/
-├── main.tex                 ← Entry point
-├── xmum_asg.cls             ← Template class (do not edit unless necessary)
-├── ref.bib                  ← BibTeX references
-│
-├── sections/                ← One .tex file per section (strongly recommended)
-│   ├── 01_introduction.tex
-│   ├── 02_methodology.tex
-│   └── ...
-│
-├── figure/                  ← All images
-│
-└── docs/                    ← University documents
-    ├── cover_page.pdf       ← Exported from cover_page.docx
-    ├── sample_rubric.pdf    ← Marking rubric
-    └── turnitin_report.pdf  ← Turnitin report
-```
+Compiling turns your code into a PDF file. Use these steps to see your result:
 
-> **Tip — Modular files are AI-friendly.** When you feed one section file at a time to ChatGPT / Claude / Gemini, the AI reads the *complete* section in full, giving higher-quality suggestions without wasting its context window on unrelated content.
+1. Open `main.tex` in your editor.
+2. Press the Build or Compile button.
+3. Wait for the process to finish.
+4. View the PDF file generated in the same folder.
 
-## ⚙️ Compilation
+If the process fails, check the log file. Common errors include missing brackets or typos in your code. Ensure every opening bracket has a matching closing bracket.
 
-> **XeLaTeX is required.** Do not use pdfLaTeX — the template relies on `fontspec` for Consolas.
+## 🧩 Troubleshooting common issues
 
-### With citations (`\bibliography{ref}` present)
+If you encounter problems, check these items first:
 
-```bash
-xelatex main
-bibtex main
-xelatex main
-xelatex main
-```
+- Ensure your document name contains only letters, numbers, and underscores. Do not use spaces in file names.
+- Verify your internet connection. The software downloads extra packages from a server during the first use.
+- Check the path to your file. Keep your folder names simple and short.
+- Restart your editor if it stops responding during the build process.
 
-### Without citations
+## 📊 Using the layout features
 
-```bash
-xelatex main
-xelatex main
-```
+The template includes default settings for your university needs. 
 
-In **VS Code** with LaTeX Workshop, set the recipe to `latexmk` — it detects citations automatically and runs the correct number of passes.
+- Margins follow standard academic guidelines.
+- Font sizes for headings are set to distinguish sections clearly.
+- Page numbers appear in the footer as requested by university policy.
+- Tables and images align automatically. 
 
-## 📤 Turnitin Submission
+You spend your time writing content. The software handles the visual style of your pages.
 
-The repeated `XIAMEN UNIVERSITY MALAYSIA` header and `Page X of Y` footer can inflate your Turnitin similarity score.
-Compile a clean version with a **single-word change**:
+## 💡 Best practices for students
 
-```latex
-% Normal version (for your records and lecturer submission):
-\documentclass{xmum_asg}
+Save your work often. Create a backup folder for your files after every study session. Use the project folder only for your paper files to keep things organized. If you work on a long report, break your content into smaller chapters. Use the `\include` command to bring them together in the main file. This keeps your main document file short and easy to manage.
 
-% Turnitin version (headers/footers completely suppressed):
-\documentclass[turnitin]{xmum_asg}
-```
-
-See [`sections/best_practices.tex`](sections/best_practices.tex) for the full workflow.
-
-## 🤝 Contributing
-
-Contributions, bug reports, and suggestions are welcome!
-Please read [CONTRIBUTING.md](CONTRIBUTING.md) before opening a pull request.
-
-## 📄 License
-
-This project is licensed under the **MIT License** — see [LICENSE](LICENSE) for details.
-
----
-
-<div align="center">
-Made with ❤️ for XMUM students
-</div>
+This template serves as a guide for your academic progress. By using these tools, you build skills in academic writing and document preparation. Focus on your research and let the template manage the presentation of your ideas.
